@@ -1,33 +1,40 @@
 require './horse.rb'
-class Movement
-	@total = 0
-	attr_accessor :move
+
+class Location
+	attr_accessor :total
 	def initialize
-		self.move = rand(1..5)
-		if @move = 1
-			puts "~"
-			total += @move
-		elsif @move = 2
-			puts "~~"
-			total += @move
-		elsif @move = 3
-			puts "~~~"
-			total += @move
-		elsif @move = 4
-			puts "~~~~"
-			total += @move
-		elsif @move = 5
-			puts "~~~~~"
-			total += @move
-		end
+		@total = 0
 	end
-	def movement
-		puts "#{@move}#{horse1}"
-		initialize
-		puts "#{@move}#{horse2}"
-		initialize
-		puts "#{@move}#{horse3}"
-		initialize
-		puts "#{@move}#{horse4}"
+	def move distance_traveled
+		puts "press Enter to move on"
+		continue = gets.chomp
+		self.distance_traveled = rand(1..5)
+		if distance_traveled = 1
+			puts "~"
+			@total += distance_traveled
+		elsif distance_traveled = 2
+			puts "~~"
+			@total += distance_traveled
+		elsif distance_traveled = 3
+			puts "~~~"
+			@total += distance_traveled
+		elsif distance_traveled = 4
+			puts "~~~~"
+			@total += distance_traveled
+		elsif distance_traveled = 5
+			puts "~~~~~"
+			@total += distance_traveled
+		end
+			line1 = "#{@total}#{horse1}"
+			line2 = "#{@total}#{horse2}"
+			line3 = "#{@total}#{horse3}"
+			line4 = "#{@total}#{horse4}"
+	end
+	def cheat
+		if continue.downcase = "cheat"
+			@total = distance_traveled + distance_traveled
+		else
+			return move
+		end
 	end
 end

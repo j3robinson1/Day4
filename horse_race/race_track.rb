@@ -1,21 +1,15 @@
 require './horse.rb'
 require './movement.rb'
-class Track
+
+class RaceTrack
+	attr_accessor :line1, :line2, :line3, :line4
 	def board
-		line1 = ""
+		@line1 = "#{horses[0]}"
 		puts "-------------------------------------------"
-		line2 = ""
+		@line2 = "#{horses[1]}"
 		puts "-------------------------------------------"
-		line3 = ""
+		@line3 = "#{horses[2]}"
 		puts "-------------------------------------------"
-		line4 = ""
-	end
-	def position
-		while 
-			line1 = "#{@total}#{horse1}"
-			line2 = "#{@total}#{horse2}"
-			line3 = "#{@total}#{horse3}"
-			line4 = "#{@total}#{horse4}"
-		end
+		@line4 = "#{horses[3]}"
 	end
 end
