@@ -4,12 +4,18 @@ require './movement.rb'
 class RaceTrack
 	attr_accessor :line1, :line2, :line3, :line4
 	def board
-		@line1 = "#{horses[0]}"
+		@line1 = "#{@total}#{@horses[0]}"
+		puts @line1
 		puts "-------------------------------------------"
-		@line2 = "#{horses[1]}"
+		@line2 = "#{@total}#{@horses[1]}"
+		puts @line2
 		puts "-------------------------------------------"
-		@line3 = "#{horses[2]}"
+		@line3 = "#{@total}#{@horses[2]}"
+		puts @line3
 		puts "-------------------------------------------"
-		@line4 = "#{horses[3]}"
+		@line4 = "#{@total}#{@horses[3]}"
+		puts @line4
 	end
 end
+put_board = RaceTrack.new
+put_board.board

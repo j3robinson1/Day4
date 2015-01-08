@@ -4,7 +4,7 @@ require './movement.rb'
 class Race
 	attr_accessor :finished
 	def initialize
-	self.finished == false
+	self.finished = false
 	end
 	def win
 		if @total.first == 30
@@ -26,3 +26,5 @@ class Race
 		end
 	end
 end
+new_race = Race.new
+new_race.horse_chosen

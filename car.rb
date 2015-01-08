@@ -19,6 +19,7 @@ class Car
 	attr_accessor :model
 	attr_accessor :back_seat
 	attr_accessor :max_speed
+	attr_accessor :vin_number
 	@@list_of_cars = []
 	# set default variables
 	# object/instance method
@@ -29,7 +30,7 @@ class Car
 		self.color = "white"
 		self.back_seat = "3"
 		self.max_speed = "80"
-		Car.list_of_cars.push(self)
+		fCar.list_of_cars.push(self)
 	end
 
 	def display_info 
