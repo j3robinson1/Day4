@@ -17,4 +17,4 @@ class RaceTrack
 	end
 end
 put_board = RaceTrack.new 
-put_board.board Horse.horses
+put_booard.board Horse.horses

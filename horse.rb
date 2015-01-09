@@ -1,4 +1,3 @@
-
 class Horse
 	attr_accessor :name 
 	@@horses = []

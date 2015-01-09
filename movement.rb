@@ -17,7 +17,7 @@ class Location
 		self.finished == true
 		end
 	end
-	def location
+	def location horses_array
 		@@total=0
 		until win
 		puts "press Enter to move on"
@@ -53,3 +53,5 @@ class Location
 	end
 end
 
+put_horse = Location.new 
+put_horse.location Horse.horses
