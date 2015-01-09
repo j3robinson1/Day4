@@ -1,4 +1,4 @@
-	# makes horses 
+# makes horses 
 	class Horse
 		attr_accessor :name, :location
 		MAX_POSITION = 30
@@ -13,7 +13,6 @@
 
 	class Race
 		attr_accessor :chosen_horse, :horses
-		attr_accessor :line1, :line2, :line3, :line4
 		MAX_MOVEMENT_FORWARD = 5
 		def initialize
 			@horses = []
@@ -40,7 +39,7 @@
 		end
 		def says_winner
 			winning_horse = horses.max_by {|horse| horse.location.position}
-			puts winning_horse.name
+			puts "#{winning_horse.name} is the winner!"
 		end
 		def everything 
 			self.setup
@@ -60,9 +59,6 @@
 			horses.each do |horse|
 				location = horse.location
 				distance_moved = rand(1..MAX_MOVEMENT_FORWARD)
-				if wants_to_cheat == true
-					distance_moved = distance_moved * 2
-				end
 				location.position += distance_moved
 			end
 		end
@@ -84,20 +80,8 @@
 				tilda = "~" * position
 				puts "#{tilda}#{name}"
 			end
-			# @line1 = "#{location.position}#{horses[0].name}"
-			# puts @line1
-			# puts "-------------------------------------------"
-			# @line2 = "#{location.position}#{horses[1].name}"
-			# puts @line2
-			# puts "-------------------------------------------"
-			# @line3 = "#{location.position}#{horses[2].name}"
-			# puts @line3
-			# puts "-------------------------------------------"
-			# @line4 = "#{location.position}#{horses[3].name}"
-			# puts @line4
 		end
 		def horse_chosen
-
 			puts "Pick a horse (1-4)"
 			@chosen_horse = gets.chomp
 			if @chosen_horse == 1
@@ -124,14 +108,3 @@
 	end
 new_race = Race.new
 new_race.everything
-
-
-
-
-# put_board = Race.new 
-# put_board.board Horse.horses
-# new_race.horses = [horse1, horse2, horse3, horse4]
-# new_race.link_horses_to_locations
-# new_race.move_horses
-# put_board.board Horse.horses
-# p new_race.horse_locations
