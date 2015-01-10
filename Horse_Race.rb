@@ -16,6 +16,7 @@
 		MAX_MOVEMENT_FORWARD = 5
 		def initialize
 			@horses = []
+			@my_horse = []
 		end
 		def make_horses
 			horses = []
@@ -32,6 +33,26 @@
 			horse4.name = "Horse #4"
 			horses.push horse4
 			self.horses = horses
+		end
+
+		def remove_horse
+			# self.horses.delete_if do |horse|
+			# 	Horse.name = 
+			# end
+		end
+
+		def horse_chosen
+			puts "Pick a horse (1-4)"
+			@chosen_horse = gets.chomp.to_i
+			if @chosen_horse == 1
+				@chosen_horse = horses[0]
+			elsif @chosen_horse == 2
+				@chosen_horse = horses[1]
+			elsif @chosen_horse == 3
+				@chosen_horse = horses[2]
+			elsif @chosen_horse == 4
+				@chosen_horse = horses[3]
+			end
 		end
 		def setup
 			self.make_horses
@@ -51,11 +72,14 @@
 
 		def run_race
 			wants_to_cheat = user_wants_to_cheat?
+			self.remove_horse
 			self.move_horses wants_to_cheat
 			self.board
 		end
 		#move each horse forward random number of spaces
 		def move_horses wants_to_cheat = false
+			@my_horse = []
+			@my_horse.push @chosen_horse
 			horses.each do |horse|
 				location = horse.location
 				distance_moved = rand(1..MAX_MOVEMENT_FORWARD)
@@ -78,20 +102,9 @@
 				name = horse.name
 				position = horse.location.position
 				tilda = "~" * position
+				puts "                                      |"
 				puts "#{tilda}#{name}"
-			end
-		end
-		def horse_chosen
-			puts "Pick a horse (1-4)"
-			@chosen_horse = gets.chomp
-			if @chosen_horse == 1
-			@chosen_horse = horse1
-			elsif @chosen_horse == 2
-			@chosen_horse = horse2
-			elsif @chosen_horse == 3
-			@chosen_horse = horse3
-			elsif @chosen_horse == 4
-			@chosen_horse = horse4
+				puts "                                      |"
 			end
 		end
 		
