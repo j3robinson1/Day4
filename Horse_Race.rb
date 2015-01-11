@@ -61,13 +61,6 @@
 			self.make_horses
 			self.horse_chosen
 		end
-		# def my_horse_win
-		# 	winning_horse = @my_horse.max_by {|horse| horse.location.position}
-			
-		# end
-		# def enemy_won
-		# 	winning_horse = horses.max_by {|horse| horse.location.position}
-		# end
 		def says_winner
 			horses.push @chosen_horse
 				winning_horse = horses.max_by {|horse| horse.location.position}
