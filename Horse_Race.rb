@@ -61,18 +61,17 @@
 			self.make_horses
 			self.horse_chosen
 		end
-		def my_horse_win
-			winning_horse = @my_horse.max_by {|horse| horse.location.position}
+		# def my_horse_win
+		# 	winning_horse = @my_horse.max_by {|horse| horse.location.position}
 			
-		end
+		# end
+		# def enemy_won
+		# 	winning_horse = horses.max_by {|horse| horse.location.position}
+		# end
 		def says_winner
-			if my_horse_win
+			horses.push @chosen_horse
 				winning_horse = horses.max_by {|horse| horse.location.position}
 				puts "#{winning_horse.name} is the winner!"
-			else
-				winning_horse = @my_horse.max_by {|horse| horse.location.position}
-				puts "#{winning_horse.name} is the winner!"
-			end
 		end
 		def everything 
 			self.setup
@@ -113,10 +112,10 @@
 
 		end
 		def find_finished_horses
-			@my_horse.select do |horse|
+			horses.select do |horse|
 				horse.finished?
 			end
-			horses.select do |horse|
+			@my_horse.select do |horse|
 				horse.finished?
 			end
 		end
