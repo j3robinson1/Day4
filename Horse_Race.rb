@@ -35,32 +35,44 @@
 			self.horses = horses
 		end
 
-		def remove_horse
-			# self.horses.delete_if do |horse|
-			# 	Horse.name = 
-			# end
-		end
-
 		def horse_chosen
 			puts "Pick a horse (1-4)"
 			@chosen_horse = gets.chomp.to_i
 			if @chosen_horse == 1
 				@chosen_horse = horses[0]
+				horses.delete_at(0)
+				@my_horse.push @chosen_horse
 			elsif @chosen_horse == 2
 				@chosen_horse = horses[1]
+				horses.delete_at(1)
+				@my_horse.push @chosen_horse
 			elsif @chosen_horse == 3
 				@chosen_horse = horses[2]
+				horses.delete_at(2)
+				@my_horse.push @chosen_horse
 			elsif @chosen_horse == 4
 				@chosen_horse = horses[3]
+				horses.delete_at(3)
+				@my_horse.push @chosen_horse
 			end
+
 		end
 		def setup
 			self.make_horses
 			self.horse_chosen
 		end
+		def my_horse_win
+			winning_horse = @my_horse.max_by {|horse| horse.location.position}
+			
+		end
 		def says_winner
-			winning_horse = horses.max_by {|horse| horse.location.position}
-			puts "#{winning_horse.name} is the winner!"
+			if my_horse_win
+				winning_horse = horses.max_by {|horse| horse.location.position}
+				puts "#{winning_horse.name} is the winner!"
+			else
+				winning_horse = @my_horse.max_by {|horse| horse.location.position}
+				puts "#{winning_horse.name} is the winner!"
+			end
 		end
 		def everything 
 			self.setup
@@ -72,15 +84,20 @@
 
 		def run_race
 			wants_to_cheat = user_wants_to_cheat?
-			self.remove_horse
+			self.move_my_horse wants_to_cheat
 			self.move_horses wants_to_cheat
 			self.board
 		end
 		#move each horse forward random number of spaces
 		def move_horses wants_to_cheat = false
-			@my_horse = []
-			@my_horse.push @chosen_horse
 			horses.each do |horse|
+				location = horse.location
+				distance_moved = rand(1..MAX_MOVEMENT_FORWARD)
+				location.position += distance_moved
+			end
+		end
+		def move_my_horse wants_to_cheat = false
+				@my_horse.each do |horse|
 				location = horse.location
 				distance_moved = rand(1..MAX_MOVEMENT_FORWARD)
 				location.position += distance_moved
@@ -90,14 +107,28 @@
 		def user_wants_to_cheat?
 			puts "Press Enter to continue"
 			continue = gets.chomp
-			continue.downcase == "cheat"
+			if continue.downcase == "cheat"
+				self.move_my_horse
+			end
+
 		end
 		def find_finished_horses
+			@my_horse.select do |horse|
+				horse.finished?
+			end
 			horses.select do |horse|
 				horse.finished?
 			end
 		end
 		def board
+			@my_horse.each do |horse|
+				name = horse.name
+				position = horse.location.position
+				tilda = "~" * position
+				puts "                                      |"
+				puts "#{tilda}#{name}"
+				puts "                                      |"
+			end
 			horses.each do |horse|
 				name = horse.name
 				position = horse.location.position
