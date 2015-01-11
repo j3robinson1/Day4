@@ -11,6 +11,7 @@
 	end
 
 
+
 	class Race
 		attr_accessor :chosen_horse, :horses
 		MAX_MOVEMENT_FORWARD = 5
@@ -93,6 +94,7 @@
 				location = horse.location
 				distance_moved = rand(1..MAX_MOVEMENT_FORWARD)
 				location.position += distance_moved
+				puts "You moved #{distance_moved} more spaces forward"
 			end
 		end
 		# true if user_input = "cheat" / false
@@ -133,8 +135,7 @@
 		
 	end
 
-		
-
+	
 
 	class Location
 		attr_accessor  :position
