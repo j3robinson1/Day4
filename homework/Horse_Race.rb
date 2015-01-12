@@ -35,7 +35,6 @@
 			horses.push horse4
 			self.horses = horses
 		end
-
 		def horse_chosen
 			puts "Pick a horse (1-4)"
 			@chosen_horse = gets.chomp.to_i
@@ -104,7 +103,6 @@
 			if continue.downcase == "cheat"
 				self.move_my_horse
 			end
-
 		end
 		def find_finished_horses
 			horses.select do |horse|
@@ -132,7 +130,6 @@
 				puts "                                      |"
 			end
 		end
-		
 	end
 
 	
